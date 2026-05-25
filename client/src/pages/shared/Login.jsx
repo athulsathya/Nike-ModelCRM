@@ -197,7 +197,7 @@ function Login() {
           <p className="text-center text-sm text-gray-500 mt-8">
             Are you a{" "}
             <Link
-              to="/admin/login"
+              to="/admin/dashboard"
               className="text-black font-semibold hover:underline"
             >
               {" "}
