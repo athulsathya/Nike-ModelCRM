@@ -18,7 +18,7 @@ connectDb()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin:'https://nike-model-crmfrontend.vercel.app/',
+    origin:'https://nike-model-crmfrontend.vercel.app',
     credentials:true
 }))
 
