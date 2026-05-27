@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { axiosinstance } from "../../axios/axiosinstance";
+import { axiosinstance } from "../axios/axiosinstance";
 
 import {
   FaCloudUploadAlt,
