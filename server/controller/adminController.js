@@ -1,9 +1,8 @@
 const Admin = require("../models/adminModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const Product=require('../models/productModel')
-const User=require('../models/userModel')
-
+const Product = require("../models/productModel");
+const User = require("../models/userModel");
 
 // Create Token
 const createToken = (admin) => {
@@ -15,10 +14,9 @@ const createToken = (admin) => {
     process.env.SECRET_KEY,
     {
       expiresIn: "7d",
-    }
+    },
   );
 };
-
 
 // register admin
 exports.regAdmin = async (req, res) => {
@@ -58,7 +56,6 @@ exports.regAdmin = async (req, res) => {
       message: "Admin Created Successfully",
       saved,
     });
-
   } catch (err) {
     console.log(err);
 
@@ -68,8 +65,6 @@ exports.regAdmin = async (req, res) => {
     });
   }
 };
-
-
 
 // login admin
 exports.loginAdmin = async (req, res) => {
@@ -95,10 +90,7 @@ exports.loginAdmin = async (req, res) => {
     }
 
     // Compare Password
-    const isMatch = await bcrypt.compare(
-      password,
-      admin.password
-    );
+    const isMatch = await bcrypt.compare(password, admin.password);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -113,8 +105,9 @@ exports.loginAdmin = async (req, res) => {
     // Store Cookie
     res.cookie("adminToken", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -129,7 +122,6 @@ exports.loginAdmin = async (req, res) => {
         role: admin.role,
       },
     });
-
   } catch (err) {
     console.log(err);
 
@@ -143,7 +135,6 @@ exports.loginAdmin = async (req, res) => {
 //logout Admin
 exports.logoutAdmin = async (req, res) => {
   try {
-
     res.clearCookie("adminToken", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -154,7 +145,6 @@ exports.logoutAdmin = async (req, res) => {
       success: true,
       message: "Admin Logout Successful",
     });
-
   } catch (err) {
     console.log(err);
 
@@ -165,25 +155,22 @@ exports.logoutAdmin = async (req, res) => {
   }
 };
 
-
-
 exports.getDashboardStats = async (req, res) => {
-    try {
-        // count total users from registered data
-        const totalUsers = await User.countDocuments();
+  try {
+    // count total users from registered data
+    const totalUsers = await User.countDocuments();
 
-        // count total products
-        const totalProducts = await Product.countDocuments();
+    // count total products
+    const totalProducts = await Product.countDocuments();
 
-        res.status(200).json({
-            stats: {
-                users: totalUsers,      // total registered users
-                products: totalProducts // total uploaded products
-            }
-        });
-    } catch (error) {
-        console.error("Error fetching dashboard stats:", error.message);
-        res.status(500).json({ error: "Internal server error" });
-    }
-}
-
+    res.status(200).json({
+      stats: {
+        users: totalUsers, // total registered users
+        products: totalProducts, // total uploaded products
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching dashboard stats:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

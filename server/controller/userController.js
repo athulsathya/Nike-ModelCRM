@@ -3,25 +3,18 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 //creating token
-const createToken = (id,role) => {
-  return jwt.sign({ id,role}, process.env.SECRET_KEY, {
+const createToken = (id, role) => {
+  return jwt.sign({ id, role }, process.env.SECRET_KEY, {
     expiresIn: "7d",
   });
 };
-
 
 //Registration
 
 exports.regUser = async (req, res) => {
   try {
-    const {
-      name,
-      email,
-      username,
-      phone,
-      password,
-      confirmpassword,
-    } = req.body;
+    const { name, email, username, phone, password, confirmpassword } =
+      req.body;
 
     // Validation
     if (
@@ -79,7 +72,7 @@ exports.regUser = async (req, res) => {
     const savedUser = await newUser.save();
 
     // Token
-    const token = createToken(savedUser._id,savedUser.role);
+    const token = createToken(savedUser._id, savedUser.role);
 
     // Cookie
     res.cookie("token", token, {
@@ -108,9 +101,6 @@ exports.regUser = async (req, res) => {
     });
   }
 };
-
-
-
 
 //Login user
 exports.loginUser = async (req, res) => {
@@ -151,8 +141,9 @@ exports.loginUser = async (req, res) => {
     // Cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -176,9 +167,6 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-
-
-
 //LogOut user
 exports.logoutUser = async (req, res) => {
   try {
@@ -197,4 +185,3 @@ exports.logoutUser = async (req, res) => {
     });
   }
 };
-
