@@ -3,8 +3,8 @@ import DarkMode from "../Shared/DarkMode";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { persistor } from "../../redux/store";
-import { clearUser } from "../redux/feature/userSlice";
-import { userLogOut } from "../services/userServices";
+import { clearUser } from "../../redux/feature/userSlice";
+import { userLogOut } from "../../services/userServices";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 
 function Header() {
