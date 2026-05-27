@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Card from "../components/user/Card";
-import { listProducts } from "../services/userServices";
+import Card from "../../components/user/Card";
+import { listProducts } from "../../services/userServices";
 
 function Products() {
   const [products, setProducts] = useState([]);  //this is the state where courses to update which taken from (res)
