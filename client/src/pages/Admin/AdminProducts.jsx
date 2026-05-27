@@ -9,19 +9,19 @@ const AdminProductsPage = () => {
     setProducts([
       {
         _id: 1,
-        title: "Wooden Chair",
-        price: 1200,
-        category: "Furniture",
+        title: "Nike Fly-By-Mid 3",
+        price: 5000,
+        category: "shoes",
         image:
-          "https://images.unsplash.com/photo-1616627784274-dc5d408e98e9?w=500",
+          "https://images-static.nykaa.com/media/catalog/product/9/8/98d81b6WBYDD9311-003_2.jpg?tr=w-500",
       },
       {
         _id: 2,
-        title: "Smart Watch",
-        price: 4500,
-        category: "Electronics",
+        title: "T-Shirt",
+        price: 1500,
+        category: "T-Shirts",
         image:
-          "https://images.unsplash.com/photo-1603791452906-c903e3b2e0d7?w=500",
+          "https://i5.walmartimages.com/seo/Nike-Men-s-T-Shirt-Logo-Swoosh-Printed-Athletic-Active-Short-Sleeve-Shirt-Blue-XL_9f0ea0e3-6bf0-4d94-9055-ced34f842c09.eabd04327d17f294a88857612a027a67.jpeg",
       },
     ]);
   }, []);
