@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/user/Card";
-import { listProducts } from "../../services/userServices";
+import { listProducts } from "../../services/UserServices";
 
 function Products() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);  //this is the state where courses to update which taken from (res)
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await listProducts();
+        const res = await listProducts();    //this hitting api is created as a function in services (listProduct)
 
         console.log(res.data);
 
-        setProducts(res.data);
+        setProducts(res.data);  //by this we got our data in [products] usig this products we 
       } catch (err) {
         console.log(err);
       }
@@ -93,8 +93,8 @@ function Products() {
 
         {/* PRODUCTS GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10">
-          {products &&
-            products.map((product) => {
+          {products &&   //if produucts are there map method will initiate
+            products.map((product) => {  //products will apper as single(product) we will return this product as card
               return (
                 <div key={product._id} className="group">
                   <div className="transition duration-300 group-hover:-translate-y-2">

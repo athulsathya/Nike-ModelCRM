@@ -2,7 +2,7 @@ import React from "react";
 import { addToCart } from "../../services/userServices";
 import { toast } from "react-toastify";
 
-function Card({ product }) {
+function Card({ product }) {  //calling product from product.jsx stored in state that one 
   const addProductToCart = (productId) => {
     addToCart(productId)
       .then((res) => {

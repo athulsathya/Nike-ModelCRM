@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { userLogin } from "../../services/userServices";
+import { userLogin } from "../services/userServices";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { saveUser } from "../../redux/feature/userSlice";

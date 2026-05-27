@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { userSignUp } from "../../services/userServices";
+import { userSignUp } from "../services/userServices";
 import { Eye, EyeOff } from "lucide-react";
 
 function Signup() {
@@ -9,10 +9,10 @@ function Signup() {
 
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({     
     name: "",
     email: "",
-    username: "",
+    username: "",                  //assigning form values to a state.
     phone: "",
     password: "",
     confirmpassword: "",
