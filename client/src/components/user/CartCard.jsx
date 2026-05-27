@@ -1,5 +1,5 @@
 import React from "react";
-import { removeCartItem } from "../services/userServices";
+import { removeCartItem } from "../../services/userServices";
 
 function CartCard({ item, updateCartFromChild }) {
   const removeItem = async (productId) => {
